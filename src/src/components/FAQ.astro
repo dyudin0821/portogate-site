@@ -1,0 +1,144 @@
+---
+import { getLangFromUrl, useTranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const faqs = lang === 'ru' ? [
+  {
+    question: "Что такое PortoGate?",
+    answer: "PortoGate — это персональный шлюз для безопасного подключения к интернету. Мы предоставляем современные решения для стабильного и защищенного доступа в сеть."
+  },
+  {
+    question: "Как быстро происходит настройка?",
+    answer: "Настройка занимает не более 5 минут. После выбора тарифа в Telegram-боте вы сразу получите все необходимые настройки для подключения."
+  },
+  {
+    question: "На каких устройствах работает?",
+    answer: "PortoGate совместим со всеми популярными устройствами и операционными системами: Windows, macOS, Linux, iOS, Android."
+  },
+  {
+    question: "Есть ли ограничения по трафику?",
+    answer: "Ограничения зависят от выбранного тарифа. В базовом тарифе есть разумные лимиты, а в профессиональном и бизнес тарифах трафик не ограничен."
+  },
+  {
+    question: "Как получить поддержку?",
+    answer: "Техническая поддержка доступна 24/7 через Telegram. Наши специалисты помогут решить любые вопросы максимально быстро."
+  },
+  {
+    question: "Можно ли сменить тариф?",
+    answer: "Да, вы можете изменить тариф в любое время через Telegram-бота. Переход происходит мгновенно без потери времени подключения."
+  }
+] : [
+  {
+    question: "What is PortoGate?",
+    answer: "PortoGate is a personal gateway for secure internet connection. We provide modern solutions for stable and protected network access."
+  },
+  {
+    question: "How fast is the setup?",
+    answer: "Setup takes no more than 5 minutes. After choosing a plan in the Telegram bot, you'll immediately receive all necessary connection settings."
+  },
+  {
+    question: "Which devices are supported?",
+    answer: "PortoGate is compatible with all popular devices and operating systems: Windows, macOS, Linux, iOS, Android."
+  },
+  {
+    question: "Are there traffic limitations?",
+    answer: "Limitations depend on the chosen plan. The basic plan has reasonable limits, while professional and business plans have unlimited traffic."
+  },
+  {
+    question: "How to get support?",
+    answer: "Technical support is available 24/7 via Telegram. Our specialists will help solve any issues as quickly as possible."
+  },
+  {
+    question: "Can I change my plan?",
+    answer: "Yes, you can change your plan anytime through the Telegram bot. The transition happens instantly without losing connection time."
+  }
+];
+---
+
+<section id="faq" class="py-20 bg-slate-950">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
+        {t('faq.title')}
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden">
+          <button 
+            class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-700/50 transition-colors duration-300"
+            type="button"
+            data-target={`faq-${index}`}
+          >
+            <span class="text-lg font-semibold text-slate-100 pr-4">
+              {faq.question}
+            </span>
+            <svg 
+              class="faq-icon w-5 h-5 text-slate-400 transform transition-transform duration-300"
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div 
+            id={`faq-${index}`}
+            class="faq-content max-h-0 overflow-hidden transition-all duration-300"
+          >
+            <div class="px-6 pb-4">
+              <p class="text-slate-300 leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqButtons = document.querySelectorAll('.faq-button');
+    
+    faqButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const content = document.getElementById(targetId);
+        const icon = button.querySelector('.faq-icon');
+        
+        if (content && icon) {
+          const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+          
+          // Close all other FAQ items
+          faqButtons.forEach(otherButton => {
+            if (otherButton !== button) {
+              const otherTargetId = otherButton.getAttribute('data-target');
+              const otherContent = document.getElementById(otherTargetId);
+              const otherIcon = otherButton.querySelector('.faq-icon');
+              
+              if (otherContent && otherIcon) {
+                otherContent.style.maxHeight = '0px';
+                otherIcon.style.transform = 'rotate(0deg)';
+              }
+            }
+          });
+          
+          // Toggle current FAQ item
+          if (isOpen) {
+            content.style.maxHeight = '0px';
+            icon.style.transform = 'rotate(0deg)';
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            icon.style.transform = 'rotate(180deg)';
+          }
+        }
+      });
+    });
+  });
+</script>

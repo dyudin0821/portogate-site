@@ -1,0 +1,250 @@
+---
+import { getLangFromUrl, useTranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Периоды подписки
+const periods = [
+  { key: '1day', label: t('pricing.period.1day') },
+  { key: '7days', label: t('pricing.period.7days') },
+  { key: '30days', label: t('pricing.period.30days') },
+  { key: '90days', label: t('pricing.period.90days') },
+  { key: '180days', label: t('pricing.period.180days') }
+];
+
+// Количество устройств
+const deviceOptions = [
+  { key: '1', label: t('pricing.devices.1') },
+  { key: '3', label: t('pricing.devices.3') },
+  { key: '5', label: t('pricing.devices.5') }
+];
+---
+
+<section id="pricing" class="py-20 bg-slate-900/50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
+        {t('pricing.title')}
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <!-- PortoLocal Plan -->
+      <div class="relative p-8 bg-slate-800/50 rounded-2xl border border-slate-700 hover:border-green-500/50 transition-all duration-300 hover:transform hover:scale-105">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-2xl font-bold text-slate-100 mb-4">
+            {t('pricing.local.title')}
+          </h3>
+          
+          <p class="text-slate-300 mb-8 text-lg">
+            {t('pricing.local.description')}
+          </p>
+
+          <!-- Селекторы периода и устройств -->
+          <div class="space-y-6 mb-8">
+            <!-- Период -->
+            <div class="text-left">
+              <label class="block text-sm font-medium text-slate-300 mb-3">
+                {t('pricing.period.label')}
+              </label>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {periods.map((period) => (
+                  <button 
+                    type="button"
+                    class="p-2 text-sm bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white rounded-lg transition-colors duration-200 border border-slate-600 hover:border-green-500"
+                    data-period={period.key}
+                  >
+                    {period.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <!-- Количество устройств -->
+            <div class="text-left">
+              <label class="block text-sm font-medium text-slate-300 mb-3">
+                {t('pricing.devices.label')}
+              </label>
+              <div class="grid grid-cols-3 gap-2">
+                {deviceOptions.map((device) => (
+                  <button 
+                    type="button"
+                    class="p-2 text-sm bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white rounded-lg transition-colors duration-200 border border-slate-600 hover:border-green-500"
+                    data-devices={device.key}
+                  >
+                    {device.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <a 
+            href="https://t.me/portogate_bot" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full py-3 px-6 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold rounded-xl transition-all duration-300 text-center"
+          >
+            {t('pricing.select')}
+          </a>
+        </div>
+      </div>
+
+      <!-- PortoGlobal Plan -->
+      <div class="relative p-8 bg-slate-800/50 rounded-2xl border-2 border-blue-500/50 hover:border-blue-400 transition-all duration-300 hover:transform hover:scale-105">
+        <!-- Popular badge -->
+        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+          <span class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-1 rounded-full text-sm font-semibold">
+            Популярный
+          </span>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-2xl font-bold text-slate-100 mb-4">
+            {t('pricing.global.title')}
+          </h3>
+          
+          <p class="text-slate-300 mb-8 text-lg">
+            {t('pricing.global.description')}
+          </p>
+
+          <!-- Селекторы периода и устройств -->
+          <div class="space-y-6 mb-8">
+            <!-- Период -->
+            <div class="text-left">
+              <label class="block text-sm font-medium text-slate-300 mb-3">
+                {t('pricing.period.label')}
+              </label>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {periods.map((period) => (
+                  <button 
+                    type="button"
+                    class="p-2 text-sm bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white rounded-lg transition-colors duration-200 border border-slate-600 hover:border-blue-500"
+                    data-period={period.key}
+                  >
+                    {period.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <!-- Количество устройств -->
+            <div class="text-left">
+              <label class="block text-sm font-medium text-slate-300 mb-3">
+                {t('pricing.devices.label')}
+              </label>
+              <div class="grid grid-cols-3 gap-2">
+                {deviceOptions.map((device) => (
+                  <button 
+                    type="button"
+                    class="p-2 text-sm bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white rounded-lg transition-colors duration-200 border border-slate-600 hover:border-blue-500"
+                    data-devices={device.key}
+                  >
+                    {device.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <a 
+            href="https://t.me/portogate_bot" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full py-3 px-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-xl transition-all duration-300 text-center"
+          >
+            {t('pricing.select')}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Дополнительная информация -->
+    <div class="mt-16 text-center">
+      <div class="bg-slate-800/30 rounded-2xl p-8 border border-slate-700">
+        <h3 class="text-xl font-semibold text-slate-100 mb-4">
+          {lang === 'ru' ? 'Нужна помощь с выбором?' : 'Need help choosing?'}
+        </h3>
+        <p class="text-slate-300 mb-6">
+          {lang === 'ru' 
+            ? 'Наша команда поддержки поможет подобрать оптимальный тариф для ваших задач' 
+            : 'Our support team will help you choose the optimal plan for your needs'
+          }
+        </p>
+        <a 
+          href="https://t.me/portogate_support" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold rounded-xl transition-all duration-300"
+        >
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 2.079.549 4.03 1.506 5.709L0 24l6.565-1.489C8.156 23.436 10.018 24 12.017 24c6.624 0 11.99-5.367 11.99-11.987C24.007 5.393 18.641.001 12.017.001zm5.539 16.605c-.272.762-1.334 1.434-1.946 1.569-.612.135-1.318.184-2.074-.129-.459-.189-1.049-.441-1.803-.771-3.225-1.414-5.327-4.667-5.488-4.876-.16-.209-1.304-1.734-1.304-3.108s.833-2.193 1.129-2.493c.296-.3.646-.374.862-.374.216 0 .432.002.619.011.198.01.465-.075.726.553.272.654.924 2.262.999 2.425.075.162.125.351.025.567-.1.216-.15.351-.3.542-.15.191-.315.427-.45.573-.15.162-.306.338-.131.662.175.324.781 1.288 1.677 2.085 1.151 1.025 2.132 1.34 2.432 1.489.3.15.475.125.649-.075.175-.2.741-.862.938-1.162.196-.3.393-.25.662-.15.271.1 1.754.826 2.056.976.302.15.504.225.579.35.075.125.075.724-.197 1.486z"/>
+          </svg>
+          {lang === 'ru' ? 'Связаться с поддержкой' : 'Contact Support'}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Добавляем интерактивность для выбора опций
+  document.addEventListener('DOMContentLoaded', function() {
+    // Выбор периода
+    document.querySelectorAll('[data-period]').forEach(button => {
+      button.addEventListener('click', function() {
+        // Убираем активное состояние с других кнопок в той же группе
+        const container = this.closest('.grid');
+        container.querySelectorAll('button').forEach(btn => {
+          btn.classList.remove('bg-green-600', 'bg-blue-600', 'border-green-500', 'border-blue-500', 'text-white');
+          btn.classList.add('bg-slate-700', 'border-slate-600', 'text-slate-300');
+        });
+        
+        // Активируем текущую кнопку
+        this.classList.remove('bg-slate-700', 'border-slate-600', 'text-slate-300');
+        const isLocal = this.closest('[data-period]').closest('.relative').querySelector('h3').textContent.includes('PortoLocal');
+        if (isLocal) {
+          this.classList.add('bg-green-600', 'border-green-500', 'text-white');
+        } else {
+          this.classList.add('bg-blue-600', 'border-blue-500', 'text-white');
+        }
+      });
+    });
+
+    // Выбор количества устройств
+    document.querySelectorAll('[data-devices]').forEach(button => {
+      button.addEventListener('click', function() {
+        // Убираем активное состояние с других кнопок в той же группе
+        const container = this.closest('.grid');
+        container.querySelectorAll('button').forEach(btn => {
+          btn.classList.remove('bg-green-600', 'bg-blue-600', 'border-green-500', 'border-blue-500', 'text-white');
+          btn.classList.add('bg-slate-700', 'border-slate-600', 'text-slate-300');
+        });
+        
+        // Активируем текущую кнопку
+        this.classList.remove('bg-slate-700', 'border-slate-600', 'text-slate-300');
+        const isLocal = this.closest('[data-devices]').closest('.relative').querySelector('h3').textContent.includes('PortoLocal');
+        if (isLocal) {
+          this.classList.add('bg-green-600', 'border-green-500', 'text-white');
+        } else {
+          this.classList.add('bg-blue-600', 'border-blue-500', 'text-white');
+        }
+      });
+    });
+  });
+</script>
