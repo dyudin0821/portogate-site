@@ -1,74 +1,74 @@
 # PortoGate Landing Page
 
-Современный лендинг для проекта PortoGate, построенный на Astro с поддержкой мультиязычности и автоматическим деплоем на GitHub Pages.
+Modern landing page for the PortoGate project, built with Astro featuring multilingual support and automated deployment to GitHub Pages.
 
-## ✨ Особенности
+## ✨ Features
 
-- 🚀 **Astro** - быстрая генерация статических сайтов
-- 🎨 **TailwindCSS** - современные стили и адаптивность
-- 🌍 **Мультиязычность** - поддержка русского и английского языков
-- 📱 **Responsive** - корректное отображение на всех устройствах
-- ⚡ **Высокая производительность** - оптимизация для скорости
-- 🔄 **Автоматический деплой** - GitHub Actions для CI/CD
-- 📝 **MDX поддержка** - для создания документации
-- 🎯 **SEO оптимизация** - мета-теги и структурированные данные
+- 🚀 **Astro** - fast static site generation
+- 🎨 **TailwindCSS** - modern styling and responsiveness
+- 🌍 **Multilingual** - Russian and English language support
+- 📱 **Responsive** - proper display on all devices
+- ⚡ **High Performance** - optimized for speed
+- 🔄 **Automated Deployment** - GitHub Actions for CI/CD
+- 📝 **MDX Support** - for creating documentation
+- 🎯 **SEO Optimization** - meta tags and structured data
 
-## � Технологический стек
+## 🛠 Tech Stack
 
 - **Frontend:** Astro, TailwindCSS, TypeScript
-- **Иконки:** Tabler Icons, Lucide
-- **Документация:** MDX
-- **Деплой:** GitHub Pages
+- **Icons:** Tabler Icons, Lucide
+- **Documentation:** MDX
+- **Deployment:** GitHub Pages
 - **CI/CD:** GitHub Actions
 
-## 🚀 Быстрый старт
+## 🚀 Quick Start
 
-### Требования
+### Requirements
 
 - Node.js 18+ 
-- npm или yarn
+- npm or yarn
 
-### Установка
+### Installation
 
 ```bash
-# Клонирование репозитория
+# Clone repository
 git clone https://github.com/your-username/portogate.git
 cd portogate/site
 
-# Установка зависимостей
+# Install dependencies
 npm install
 
-# Запуск dev сервера
+# Start dev server
 npm run dev
 ```
 
-Сайт будет доступен по адресу `http://localhost:4321`
+The site will be available at `http://localhost:4321`
 
-### Основные команды
+### Main Commands
 
 ```bash
-# Разработка
+# Development
 npm run dev
 
-# Сборка для продакшена
+# Production build
 npm run build
 
-# Предварительный просмотр сборки
+# Preview build
 npm run preview
 
-# Проверка кода
+# Code check
 npm run astro check
 ```
 
-## 📁 Структура проекта
+## 📁 Project Structure
 
 ```
 site/
-├── public/                 # Статические файлы
-│   ├── images/            # Изображения
+├── public/                 # Static files
+│   ├── images/            # Images
 │   └── favicon.svg        # Favicon
 ├── src/
-│   ├── components/        # Компоненты Astro
+│   ├── components/        # Astro components
 │   │   ├── Navigation.astro
 │   │   ├── Hero.astro
 │   │   ├── Features.astro
@@ -76,29 +76,29 @@ site/
 │   │   ├── Pricing.astro
 │   │   ├── FAQ.astro
 │   │   └── Footer.astro
-│   ├── layouts/           # Макеты страниц
+│   ├── layouts/           # Page layouts
 │   │   └── Layout.astro
-│   ├── pages/             # Страницы сайта
-│   │   ├── ru/           # Русская версия
-│   │   ├── en/           # Английская версия
-│   │   └── index.astro   # Редирект на /ru/
-│   ├── styles/           # Глобальные стили
+│   ├── pages/             # Site pages
+│   │   ├── ru/           # Russian version
+│   │   ├── en/           # English version
+│   │   └── index.astro   # Redirect to /ru/
+│   ├── styles/           # Global styles
 │   │   └── global.css
-│   └── utils/            # Утилиты
-│       └── i18n.ts       # Система переводов
-├── astro.config.mjs      # Конфигурация Astro
-└── tailwind.config.js    # Конфигурация Tailwind
+│   └── utils/            # Utilities
+│       └── i18n.ts       # Translation system
+├── astro.config.mjs      # Astro configuration
+└── tailwind.config.js    # Tailwind configuration
 ```
 
-## 🌍 Мультиязычность
+## 🌍 Internationalization
 
-Сайт поддерживает два языка:
-- **Русский** (`/ru/`) - основной язык
-- **Английский** (`/en/`) - дополнительный язык
+The site supports two languages:
+- **Russian** (`/ru/`) - primary language
+- **English** (`/en/`) - secondary language
 
-Переводы хранятся в файле `src/utils/i18n.ts`.
+Translations are stored in the `src/utils/i18n.ts` file.
 
-### Добавление нового перевода
+### Adding New Translation
 
 ```typescript
 export const ui = {
@@ -111,55 +111,55 @@ export const ui = {
 } as const;
 ```
 
-## 🎨 Дизайн-система
+## 🎨 Design System
 
-### Цветовая палитра
+### Color Palette
 
-- **Основной:** `#0E1E2F`
-- **Фон:** `#0A0A0A` 
-- **Акцент:** `#4F81C7`
-- **Границы:** `#DDE3EC`
+- **Primary:** `#0E1E2F`
+- **Background:** `#0A0A0A` 
+- **Accent:** `#4F81C7`
+- **Borders:** `#DDE3EC`
 
-### Компоненты
+### Components
 
-Все компоненты следуют принципам:
-- Responsive дизайн (mobile-first)
-- Темная тема по умолчанию
-- Плавные анимации и переходы
-- Доступность (a11y)
+All components follow these principles:
+- Responsive design (mobile-first)
+- Dark theme by default
+- Smooth animations and transitions
+- Accessibility (a11y)
 
-## 🚀 Деплой
+## 🚀 Deployment
 
-### GitHub Pages (автоматически)
+### GitHub Pages (Automatic)
 
-1. Пуш в ветку `main`
-2. GitHub Actions автоматически собирает и деплоит сайт
-3. Сайт доступен по адресу `https://your-username.github.io/portogate`
+1. Push to `main` branch
+2. GitHub Actions automatically builds and deploys the site
+3. Site is available at `https://your-username.github.io/portogate`
 
-### Ручной деплой
+### Manual Deployment
 
 ```bash
-# Сборка
+# Build
 npm run build
 
-# Деплой папки dist/ на ваш хостинг
+# Deploy dist/ folder to your hosting
 ```
 
-## 📝 Контент
+## 📝 Content
 
-### Добавление новой страницы
+### Adding a New Page
 
-1. Создайте файл в `src/pages/ru/` и `src/pages/en/`
-2. Используйте макет `Layout.astro`
-3. Добавьте навигацию при необходимости
+1. Create a file in `src/pages/ru/` and `src/pages/en/`
+2. Use the `Layout.astro` layout
+3. Add navigation if needed
 
-### Документация
+### Documentation
 
-Документация создается в формате MDX в папках:
+Documentation is created in MDX format in folders:
 - `src/pages/ru/docs/`
 - `src/pages/en/docs/`
 
-## 🔧 Конфигурация
+## 🔧 Configuration
 
 ### Astro (astro.config.mjs)
 
@@ -175,26 +175,26 @@ export default defineConfig({
 });
 ```
 
-### Обновление ссылок
+### Updating Links
 
-Обновите ссылки на Telegram-бота в компонентах:
+Update Telegram bot links in components:
 - `src/components/Hero.astro`
 - `src/components/Pricing.astro`
 - `src/components/Footer.astro`
 
-## 📊 Производительность
+## 📊 Performance
 
-Целевые показатели Lighthouse:
+Target Lighthouse scores:
 - **Performance:** 90+
 - **Accessibility:** 90+
 - **Best Practices:** 90+
 - **SEO:** 90+
 
-## 🤝 Контрибьюция
+## 🤝 Contributing
 
-1. Форкните репозиторий
-2. Создайте ветку для фичи (`git checkout -b feature/amazing-feature`)
-3. Коммитьте изменения (`git commit -m 'Add amazing feature'`)
-4. Пушьте в ветку (`git push origin feature/amazing-feature`)
-5. Откройте Pull Request
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
